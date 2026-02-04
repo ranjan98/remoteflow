@@ -52,3 +52,75 @@ export interface SlackStatus {
   emoji: string;
   expiration?: number;
 }
+
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  meetingUrl?: string;
+  attendees?: string[];
+  description?: string;
+}
+
+export interface TimeEntry {
+  id: string;
+  date: string;
+  startTime: Date;
+  endTime?: Date;
+  activity: string;
+  project?: string;
+  duration?: number;
+}
+
+export interface AnalyticsData {
+  totalCommits: number;
+  totalPRs: number;
+  totalIssues: number;
+  activeRepos: string[];
+  timeTracked: number;
+  mostProductiveHours: number[];
+  dailyStats: DailyStats[];
+}
+
+export interface DailyStats {
+  date: string;
+  commits: number;
+  prs: number;
+  hoursWorked: number;
+}
+
+export interface JiraIssue {
+  key: string;
+  summary: string;
+  status: string;
+  assignee?: string;
+  url: string;
+  updated: string;
+}
+
+export interface LinearIssue {
+  id: string;
+  title: string;
+  state: string;
+  assignee?: string;
+  url: string;
+  updatedAt: string;
+}
+
+export interface AutomationRule {
+  id: string;
+  name: string;
+  trigger: 'time' | 'calendar' | 'manual';
+  triggerConfig: {
+    time?: string; // cron format
+    calendarEventType?: 'meeting_start' | 'meeting_end' | 'work_hours';
+  };
+  actions: AutomationAction[];
+  enabled: boolean;
+}
+
+export interface AutomationAction {
+  type: 'slack_status' | 'join_meeting' | 'post_standup' | 'start_timer' | 'stop_timer';
+  config: Record<string, unknown>;
+}

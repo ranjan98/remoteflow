@@ -15,10 +15,26 @@ const ConfigSchema = z.object({
   anthropic: z.object({
     apiKey: z.string().optional(),
   }),
+  google: z.object({
+    clientId: z.string().optional(),
+    clientSecret: z.string().optional(),
+    refreshToken: z.string().optional(),
+  }),
+  jira: z.object({
+    host: z.string().optional(),
+    username: z.string().optional(),
+    apiToken: z.string().optional(),
+  }),
+  linear: z.object({
+    apiKey: z.string().optional(),
+  }),
   settings: z.object({
     timezone: z.string().default('UTC'),
     workStartHour: z.number().default(9),
     workEndHour: z.number().default(17),
+    enableAutoJoin: z.boolean().default(false),
+    enableTimeTracking: z.boolean().default(false),
+    webDashboardPort: z.number().default(3000),
   }),
 });
 
@@ -36,6 +52,19 @@ export const config: Config = ConfigSchema.parse({
   anthropic: {
     apiKey: process.env.ANTHROPIC_API_KEY,
   },
+  google: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+  },
+  jira: {
+    host: process.env.JIRA_HOST,
+    username: process.env.JIRA_USERNAME,
+    apiToken: process.env.JIRA_API_TOKEN,
+  },
+  linear: {
+    apiKey: process.env.LINEAR_API_KEY,
+  },
   settings: {
     timezone: process.env.TIMEZONE,
     workStartHour: process.env.WORK_START_HOUR
@@ -43,6 +72,11 @@ export const config: Config = ConfigSchema.parse({
       : undefined,
     workEndHour: process.env.WORK_END_HOUR
       ? parseInt(process.env.WORK_END_HOUR, 10)
+      : undefined,
+    enableAutoJoin: process.env.ENABLE_AUTO_JOIN === 'true',
+    enableTimeTracking: process.env.ENABLE_TIME_TRACKING === 'true',
+    webDashboardPort: process.env.WEB_DASHBOARD_PORT
+      ? parseInt(process.env.WEB_DASHBOARD_PORT, 10)
       : undefined,
   },
 });
