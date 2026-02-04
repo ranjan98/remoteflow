@@ -1,0 +1,45 @@
+{
+  "name": "remoteflow",
+  "version": "0.1.0",
+  "description": "Privacy-first automation assistant for remote workers",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "test": "vitest"
+  },
+  "keywords": [
+    "remote-work",
+    "automation",
+    "productivity",
+    "slack",
+    "github",
+    "assistant"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@slack/web-api": "^7.0.0",
+    "@anthropic-ai/sdk": "^0.30.0",
+    "dotenv": "^16.4.0",
+    "octokit": "^3.2.0",
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "dayjs": "^1.11.10",
+    "zod": "^3.23.0"
+  }
+}
