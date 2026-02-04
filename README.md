@@ -371,7 +371,7 @@ Work with distributed teams:
 - [x] **Web dashboard** - Visual analytics dashboard with real-time insights
 - [x] **Multi-timezone team support** - Timezone-aware scheduling and collaboration
 
-### Coming Soon
+### Potential Features
 
 - [ ] AI-powered standup summaries (using Claude)
 - [ ] Desktop app with system tray
