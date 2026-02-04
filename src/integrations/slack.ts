@@ -56,7 +56,7 @@ export class SlackIntegration {
 
   async getProfile() {
     try {
-      const result = await this.client.users.profile.get();
+      const result = await this.client.users.profile.get({});
       return result.profile;
     } catch (error) {
       console.error('Error fetching Slack profile:', error);
