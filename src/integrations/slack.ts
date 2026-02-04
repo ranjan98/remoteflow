@@ -1,4 +1,5 @@
 import { WebClient } from '@slack/web-api';
+import type { Block, KnownBlock } from '@slack/web-api';
 import type { SlackStatus } from '../types/index.js';
 
 export class SlackIntegration {
@@ -40,7 +41,7 @@ export class SlackIntegration {
     }
   }
 
-  async postMessage(channel: string, text: string, blocks?: any[]): Promise<void> {
+  async postMessage(channel: string, text: string, blocks?: (Block | KnownBlock)[]): Promise<void> {
     try {
       await this.client.chat.postMessage({
         channel,
