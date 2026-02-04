@@ -361,7 +361,7 @@ Work with distributed teams:
 
 ## Roadmap
 
-### ✅ Recently Implemented
+###  Implemented
 
 - [x] **Google Calendar integration** - Auto-sync with calendar and detect meeting links
 - [x] **Meeting auto-joiner** - Automatically join Zoom, Google Meet, and Teams meetings
